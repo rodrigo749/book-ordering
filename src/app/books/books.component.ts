@@ -22,6 +22,7 @@ export class BooksComponent implements OnInit {
   ngOnInit(): void {
     this.books = [];
     this.form = new FormGroup({
+      id: new FormControl(1),
       title: new FormControl(),
       authorName: new FormControl(),
       editionYear: new FormControl()
@@ -35,7 +36,7 @@ export class BooksComponent implements OnInit {
     console.log('teste', this.books);
 
     localStorage.setItem("BD", JSON.stringify(this.books));
-    this.form.reset();
+    //this.form.reset();
     this.showTable = true;
   }
 
@@ -48,13 +49,15 @@ export class BooksComponent implements OnInit {
   }
 
   sortBooks(order: 'ascTitle' | 'ascAuthor' | 'descTitle' | 'descEdition' | 'authorDesc' ): void {
-    // this.books?.filter.sort((a, b) => {
-    //   if (order === 'ascTitle') {
-    //     return a.text.localeCompare(b.text);
-    //   } else {
-    //     return b.text.localeCompare(a.text);
-    //   }
-    // });
+    console.log('books', this.books);
+    const values = JSON.stringify(this.books);
+    const orderByTitle = Object.keys(values);
+    console.log('values', orderByTitle);
+
+    if(order === 'ascTitle'){
+      return
+    }
+
   }
 
 }
