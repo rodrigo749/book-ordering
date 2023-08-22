@@ -44,4 +44,14 @@ export class BooksComponent implements OnInit {
     }
   }
 
+  sortTodos(order: 'asc' | 'desc'): void {
+    // this.books.sort((a, b) => {
+    //   if (order === 'asc') {
+    //     return a.text.localeCompare(b.text);
+    //   } else {
+    //     return b.text.localeCompare(a.text);
+    //   }
+    // });
+  }
+
 }

@@ -40,16 +40,24 @@
                 />
               </div>
             </div>
-            <div class="col-3">
-                <button type="submit" class="btn btn-outline-info btn-sm">Add Book</button>
+            <br />
+            <div class="flex-row col-3 justify-content-lg-between buttons" >
+              <button type="submit" class="btn btn-info btn-sm">
+                Add Book
+              </button>
+              <button class="btn btn-warning btn-sm" (click)="sortTodos('asc')">Sort A-Z</button>
+              <button class="btn btn-success btn-sm" (click)="sortTodos('desc')">Sort Z-A</button>
             </div>
+            <br />
           </div>
         </div>
       </form>
 
+
+
       <div class="container">
         <div class="pt-5 row" *ngIf="books?.length == 0">
-          <h3 class="text-danger"> Sem Livros Cadastrados</h3>
+          <h3 class="text-danger">Sem Livros Cadastrados</h3>
         </div>
 
         <div class="pt-5 row" *ngIf="books">
@@ -61,20 +69,21 @@
             </tr>
 
             <tr *ngFor="let book of books">
-              <td>{{book.title}}</td>
-              <td>{{book.authorName}}</td>
-              <td>{{book.editionYear}}</td>
+              <td>{{ book.title }}</td>
+              <td>{{ book.authorName }}</td>
+              <td>{{ book.editionYear }}</td>
               <td>
-                <button type="button" class="btn btn-sm btn-outline-info rounded-circle">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-info rounded-circle"
+                >
                   <fa-icon [icon]="faCheckCircle"></fa-icon>
                 </button>
               </td>
             </tr>
           </table>
-
         </div>
       </div>
-
     </div>
   </div>
 </div>
