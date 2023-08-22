@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 
 import { Guid } from 'guid-typescript';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { Book } from '../Book';
 
 @Component({
@@ -12,9 +12,10 @@ import { Book } from '../Book';
 })
 export class BooksComponent implements OnInit {
 
-  faCheckCircle = faCheckCircle;
+  faBook = faBook;
   books?: Book[];
   form: any;
+  showTable: boolean = false;
 
   constructor() {}
 
@@ -29,11 +30,13 @@ export class BooksComponent implements OnInit {
 
 
   addBook(): void {
-    this.form.value.title = Guid.create().toString();
     const book: Book = this.form.value;
     this.books?.push(book);
+    console.log('teste', this.books);
+
     localStorage.setItem("BD", JSON.stringify(this.books));
     this.form.reset();
+    this.showTable = true;
   }
 
   showBooks(): void {
@@ -44,9 +47,9 @@ export class BooksComponent implements OnInit {
     }
   }
 
-  sortTodos(order: 'asc' | 'desc'): void {
-    // this.books.sort((a, b) => {
-    //   if (order === 'asc') {
+  sortBooks(order: 'ascTitle' | 'ascAuthor' | 'descTitle' | 'descEdition' | 'authorDesc' ): void {
+    // this.books?.filter.sort((a, b) => {
+    //   if (order === 'ascTitle') {
     //     return a.text.localeCompare(b.text);
     //   } else {
     //     return b.text.localeCompare(a.text);

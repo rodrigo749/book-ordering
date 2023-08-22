@@ -9,3 +9,7 @@
   gap: 10px;
   margin-top: 10px;
 }
+
+td {
+  border: 2px solid;
+}
