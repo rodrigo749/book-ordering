@@ -19,11 +19,29 @@ export class BooksComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.books = [];
     this.form = new FormGroup({
       title: new FormControl(),
       authorName: new FormControl(),
       editionYear: new FormControl()
     })
+  }
+
+
+  addBook(): void {
+    this.form.value.title = Guid.create().toString();
+    const book: Book = this.form.value;
+    this.books?.push(book);
+    localStorage.setItem("BD", JSON.stringify(this.books));
+    this.form.reset();
+  }
+
+  showBooks(): void {
+    if(localStorage.getItem('BD')) {
+      this.books = JSON.parse(localStorage.getItem('BD') || '');
+    } else {
+      this.books = [];
+    }
   }
 
 }
