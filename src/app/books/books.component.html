@@ -41,13 +41,13 @@
               </div>
             </div>
             <br />
-            <div class="flex-row col-3 justify-content-lg-between buttons" >
-              <button type="submit" class="btn btn-info btn-sm">
-                Add Book
-              </button>
-              <button class="btn btn-warning btn-sm" (click)="sortBooks('ascTitle')">Title Asc</button>
-              <button class="btn btn-success btn-sm" (click)="sortBooks('ascAuthor')">Author Asc</button>
-              <button class="btn btn-danger btn-sm" (click)="sortBooks('descTitle')">Title Desc</button>
+            <button type="submit" class="btn btn-info btn-lg mt-3">
+              Add Book
+            </button>
+            <div class="flex-row col-4 justify-content-lg-between buttons" >
+              <button class="btn btn-warning btn-sm">Order By Title Asc</button>
+              <button class="btn btn-success btn-sm">Order By Author Asc</button>
+              <button class="btn btn-danger btn-sm">Order By Title Desc</button>
             </div>
             <br />
           </div>
@@ -70,6 +70,7 @@
             </tr>
 
             <tr *ngFor="let book of books">
+              <td> Livro</td>
               <td>{{ book.title }}</td>
               <td>{{ book.authorName }}</td>
               <td>{{ book.editionYear }}</td>

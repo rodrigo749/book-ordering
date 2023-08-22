@@ -1,5 +1,5 @@
 export class Book {
-  bookId?: string
+  id?: number
   title?: string
   authorName?: string
   editionYear?: number

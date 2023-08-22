@@ -13,9 +13,10 @@ import { Book } from '../Book';
 export class BooksComponent implements OnInit {
 
   faBook = faBook;
-  books?: Book[];
+  books?: Book[] = [];
   form: any;
   showTable: boolean = false;
+
 
   constructor() {}
 
@@ -29,34 +30,27 @@ export class BooksComponent implements OnInit {
     })
   }
 
-
   addBook(): void {
     const book: Book = this.form.value;
     this.books?.push(book);
-    console.log('teste', this.books);
-
     localStorage.setItem("BD", JSON.stringify(this.books));
-    //this.form.reset();
+    this.form.reset();
     this.showTable = true;
   }
 
   showBooks(): void {
-    if(localStorage.getItem('BD')) {
-      this.books = JSON.parse(localStorage.getItem('BD') || '');
-    } else {
-      this.books = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      if(localStorage.getItem('BD')) {
+        this.books = JSON.parse(localStorage.getItem('BD') || '' );
+        console.log(this.books);
+      } else {
+        this.books = [];
+      }
     }
+
   }
 
-  sortBooks(order: 'ascTitle' | 'ascAuthor' | 'descTitle' | 'descEdition' | 'authorDesc' ): void {
-    console.log('books', this.books);
-    const values = JSON.stringify(this.books);
-    const orderByTitle = Object.keys(values);
-    console.log('values', orderByTitle);
-
-    if(order === 'ascTitle'){
-      return
-    }
+  sortByTitle(): void {
 
   }
 
