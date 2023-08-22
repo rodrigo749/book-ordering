@@ -42,7 +42,6 @@ export class BooksComponent implements OnInit {
     for (var i = 0; i < localStorage.length; i++) {
       if(localStorage.getItem('BD')) {
         this.books = JSON.parse(localStorage.getItem('BD') || '' );
-        console.log(this.books);
       } else {
         this.books = [];
       }
@@ -50,8 +49,35 @@ export class BooksComponent implements OnInit {
 
   }
 
-  sortByTitle(): void {
+  sortByTitle(): any {
+    if(localStorage.getItem('BD')) {
+      this.books = JSON.parse(localStorage.getItem('BD') || '' );
+    }
+    this.books?.sort((a, b) => {
+      if(a.title && b.title) {
+        return (a.title as string).localeCompare(b.title as string)
+      }
+    return 0
+    })
+  }
 
+  sortByAuthor(): any {
+    if(localStorage.getItem('BD')) {
+      this.books = JSON.parse(localStorage.getItem('BD') || '' );
+    }
+    this.books?.sort((a, b) => {
+      if(a.authorName && b.authorName) {
+        return (a.authorName as string).localeCompare(b.authorName as string)
+      }
+    return 0
+    })
+  }
+
+  sortByTitleDesc(): any {
+    if(localStorage.getItem('BD')) {
+      this.books = JSON.parse(localStorage.getItem('BD') || '' );
+    }
+    this.books?.sort((bookA, bookB) => (bookB.editionYear as number) - (bookA.editionYear as number)) ;
   }
 
 }
